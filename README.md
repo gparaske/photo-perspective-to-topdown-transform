@@ -47,7 +47,7 @@ Corrected top-down view:
 ![Top-down](images/after.jpg)
 
 Try to avoid including other objects in the photo, because the algorithm attempts to detect straight lines around the board’s perimeter.  
-Below is an example where the photo is not focused on the board, and as a result the algorithm mistakenly selects unrelated lines:
+Below is an example where the photo is not focused on the board, and as a result the algorithm mistakenly selects unrelated lines:  
 ![Avoid](images/avoid.jpg)
 
 ---
