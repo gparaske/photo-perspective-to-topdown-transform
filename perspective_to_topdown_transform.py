@@ -23,13 +23,15 @@ def get_topdown_board(img, debug=False):
       - matrix: το 3x3 perspective transform matrix
     """
     h_img, w_img = img.shape[:2]
+    threshold = int(min(h_img, w_img) * 0.06)  # 1/16 του μικρότερου dimension
+    min_line_length = int(min(h_img, w_img) * 0.04)  # 1/25 του μικρότερου dimension
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray, (5, 5), 0)
     edges = cv2.Canny(blur, 50, 150)
     if debug:
         show_image("Canny Edges", edges, scale=0.2)
 
-    lines = cv2.HoughLinesP(edges, 1, np.pi / 180, threshold=150, minLineLength=100, maxLineGap=10)
+    lines = cv2.HoughLinesP(edges, 1, np.pi / 180, threshold=threshold, minLineLength=min_line_length, maxLineGap=10)
     if lines is None:
         raise ValueError("Δεν βρέθηκαν γραμμές.")
 
@@ -165,5 +167,5 @@ def get_topdown_board(img, debug=False):
 # Εκτέλεση--
 img = cv2.imread("first_move.jpg")
 show_image("Original Image", img, scale=0.2)
-top_down_img, M = get_topdown_board(img)
+top_down_img, M = get_topdown_board(img, debug=True)
 show_image("Top-down Image", top_down_img, scale=0.2)
