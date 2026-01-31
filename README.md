@@ -8,6 +8,7 @@ The algorithm detects edges, extracts representative lines, computes their inter
 ## Features
 - Detects board edges using Canny edge detection and Hough transform.
 - Finds the most representative top, bottom, left, and right lines.
+- Optional YOLO-based object detection to restrict line selection to relevant regions.
 - Computes intersections to identify the four corners.
 - Applies perspective transform to generate a corrected top-down image.
 - Returns both the transformed image and the 3×3 perspective matrix.
