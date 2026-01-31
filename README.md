@@ -32,7 +32,8 @@ pip install opencv-python numpy
 Inside the script:
 ```
 img = cv2.imread("input.jpg")
-top_down_img, M = get_topdown_board(img, debug=True)
+#top_down_img, M = get_topdown_board(img, debug=True)
+top_down_img, M = get_topdown_board(img, model=r"train_tiles_augm\best.pt", debug=True)
 show_image("Top-down Image", top_down_img, scale=0.2)
 ```
 - debug=True shows intermediate steps (edges, lines, intersections).
